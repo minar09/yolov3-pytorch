@@ -18,7 +18,7 @@
 
 # Disclaimer
 
-This repository is a customized version for single class training. For more details and issues, please refer to the original repositry: https://github.com/ultralytics/yolov3.
+This repository is a customized version for single class training. For more details and issues, please refer to the original repository: https://github.com/ultralytics/yolov3.
 
 # Introduction
 
