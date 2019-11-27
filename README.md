@@ -16,6 +16,10 @@
   </tr>
 </table>
 
+# Disclaimer
+
+This repository is a customized version for single class training. For more details and issues, please refer to the original repositry: https://github.com/ultralytics/yolov3.
+
 # Introduction
 
 This directory contains PyTorch YOLOv3 software developed by Ultralytics LLC, and **is freely available for redistribution under the GPL-3.0 license**. For more information please visit https://www.ultralytics.com.
