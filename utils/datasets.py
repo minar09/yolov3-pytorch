@@ -10,6 +10,7 @@ from threading import Thread
 import cv2
 import numpy as np
 import torch
+import PIL
 from PIL import Image, ExifTags
 from torch.utils.data import Dataset
 from tqdm import tqdm
@@ -298,6 +299,7 @@ class LoadImagesAndLabels(Dataset):  # for training/testing
                     s = [x.split() for x in f.read().splitlines()]
                     assert len(s) == n, 'Shapefile out of sync'
             except:
+                PIL.Image.MAX_IMAGE_PIXELS = None
                 s = [exif_size(Image.open(f)) for f in tqdm(self.img_files, desc='Reading image shapes')]
                 np.savetxt(sp, s, fmt='%g')  # overwrites existing (if any)
 
