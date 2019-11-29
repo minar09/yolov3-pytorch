@@ -335,16 +335,18 @@ class LoadImagesAndLabels(Dataset):  # for training/testing
             nm, nf, ne, ns = 0, 0, 0, 0  # number missing, number found, number empty, number datasubset
             for i, file in enumerate(pbar):
                 try:
-                    with open(file, 'r') as f:
+                    with open(file, 'r', encoding='UTF-8') as f:
                         # l = np.array([x.split() for x in f.read().splitlines()], dtype=np.float32)
                         t = []
+                        # print(f.read())
                         for ind, each in enumerate(f.read().split()):
                             if ind == 0:
                                 t.append(0.00)
                             else:
                                 t.append(float(each))
                         l = np.array([t], dtype=np.float32)
-                except:
+                except Exception as err:
+                    # print(err)
                     nm += 1  # print('missing labels for image %s' % self.img_files[i])  # file missing
                     continue
 
@@ -459,7 +461,7 @@ class LoadImagesAndLabels(Dataset):  # for training/testing
                         t = []
                         for ind, each in enumerate(f.read().split()):
                             if ind == 0:
-                                t.append(0.00)
+                                t.append(0)
                             else:
                                 t.append(float(each))
                         x = np.array([t], dtype=np.float32)
@@ -605,8 +607,17 @@ def load_mosaic(self, index):
         if os.path.isfile(label_path):
             x = self.labels[index]
             if x is None:  # labels not preloaded
-                with open(label_path, 'r') as f:
-                    x = np.array([x.split() for x in f.read().splitlines()], dtype=np.float32)
+                with open(label_path, 'r', encoding='UTF-8') as f:
+                    # x = np.array([x.split() for x in f.read().splitlines()], dtype=np.float32)
+                    # print(f.read().split())
+                    # x = np.array([x.split() for x in f.read().splitlines()], dtype=np.float32)
+                    t = []
+                    for ind, each in enumerate(f.read().split()):
+                        if ind == 0:
+                            t.append(0)
+                        else:
+                            t.append(float(each))
+                    x = np.array([t], dtype=np.float32)
 
             if x.size > 0:
                 # Normalized xywh to pixel xyxy format
