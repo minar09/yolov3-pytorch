@@ -402,7 +402,7 @@ def prebias():
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     # parser.add_argument('--epochs', type=int, default=273)  # 500200 batches at bs 16, 117263 images = 273 epochs
-    parser.add_argument('--epochs', type=int, default=100)  # 500200 batches at bs 16, 117263 images = 273 epochs
+    parser.add_argument('--epochs', type=int, default=16)  # 500200 batches at bs 16, 117263 images = 273 epochs
     # parser.add_argument('--batch-size', type=int, default=32)  # effective bs = batch_size * accumulate = 16 * 4 = 64
     parser.add_argument('--batch-size', type=int, default=16)  # effective bs = batch_size * accumulate = 16 * 4 = 64
     # parser.add_argument('--accumulate', type=int, default=2, help='batches to accumulate before optimizing')
